@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Brandon's daily task arcade for staying on top of everyday jobs." />
+  <title>Brandon's Task Arcade</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Brandon's Task Arcade home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>BRANDON'S<br><em>DAILY ARCADE</em></span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-btn" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♫</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow" id="dateLabel">TODAY</p>
+          <h1>WHAT'S ON <span>TODAY?</span></h1>
+          <p class="hero-copy">Finish a task, then take a turn.</p>
+        </div>
+        <div class="hero-score" aria-label="Today's score">
+          <span class="score-label">TODAY'S POINTS</span>
+          <strong id="scoreValue">120</strong><small> PTS</small>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <aside class="tasks-panel panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">TODAY</p>
+              <h2>Task list <span id="taskCount">3</span></h2>
+            </div>
+            <button class="edit-btn" id="editToggle">EDIT <span>✎</span></button>
+          </div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <p class="progress-label"><span id="doneCount">0</span> of <span id="totalCount">3</span> complete</p>
+          <div class="task-list" id="taskList"></div>
+          <button class="add-task" id="addTask"><span>＋</span> ADD A TASK</button>
+          <form class="task-form" id="taskForm" hidden>
+            <label>Task name<input id="newTaskTitle" type="text" placeholder="What needs to get done?" required /></label>
+            <label>Due date &amp; time<input id="newTaskDue" type="datetime-local" /></label>
+            <button class="primary-btn" type="submit">SAVE TASK <span>✓</span></button>
+          </form>
+          <div class="tip"><span>✦</span><p><strong>HOW TO PLAY</strong><br>Collect a big orb, then finish a task. If a ghost catches you, finish two.</p></div>
+        </aside>
+
+        <section class="game-panel panel">
+          <div class="game-heading">
+            <div>
+              <p class="section-kicker">GAME <span class="live-dot"></span> READY</p>
+              <h2>THE MAZE</h2>
+            </div>
+            <div class="game-heading-meta"><span class="game-streak" id="streakDisplay"><span class="flame">◒</span> 1 DAY STREAK</span><span class="high-score">BEST <strong id="highScore">420</strong></span></div>
+          </div>
+          <div class="game-wrap">
+            <canvas id="gameCanvas" width="672" height="448" aria-label="Playable maze game"></canvas>
+            <div class="game-overlay" id="gameOverlay">
+              <span class="overlay-badge">YOUR TURN</span>
+              <h3 id="overlayTitle">START</h3>
+              <p id="overlayText">Move through the maze and collect the big orbs.</p>
+              <button class="primary-btn" id="startGame">START GAME <span>→</span></button>
+            </div>
+          </div>
+          <div class="game-footer">
+            <div class="controls"><span class="key">←</span><span class="key">↑</span><span class="key">↓</span><span class="key">→</span><span>MOVE</span></div>
+            <div class="game-status"><span class="status-dot"></span><span id="gameStatus">READY</span><span class="timer" id="timer">00:00</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="bottom-row">
+        <div class="run-card panel"><div class="run-card-head"><p class="section-kicker">THIS ROUND</p><span class="run-pulse"></span></div><h2>Run details</h2><div class="run-stats"><div class="run-stat"><span class="stat-icon orb-icon">●</span><div><strong id="orbStat">0 / 3</strong><small>BIG ORBS</small></div></div><div class="run-stat"><span class="stat-icon ghost-icon">◆</span><div><strong id="ghostStat">0 / 4</strong><small>GHOSTS CAUGHT</small></div></div><div class="run-stat"><span class="stat-icon task-icon">✓</span><div><strong id="taskStat">0</strong><small>TASKS DONE</small></div></div></div><p class="run-note" id="runNote">Collect all 3 big orbs to turn the ghosts blue.</p></div>
+        <div class="weekly-card panel"><div class="weekly-head"><div><p class="section-kicker">THIS WEEK</p><h2>Week at a glance</h2></div><span class="weekly-total">12 <small>TASKS</small></span></div><div class="week-bars" id="weekBars"></div><div class="week-labels"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div></div>
+      </section>
+    </main>
+    <footer><span>BRANDON'S TASK ARCADE</span><span>KEEP PLAYING · KEEP MOVING</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
